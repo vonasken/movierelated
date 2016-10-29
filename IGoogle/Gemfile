@@ -1,0 +1,7 @@
+gem "sinatra"
+
+gem 'instagram', '~> 1.1', '>= 1.1.6'
+
+gem 'twitter', '~> 5.16'
+
+gem 'google_maps_service', '~> 0.4.2'
