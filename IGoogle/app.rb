@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 require 'instagram'
 require 'twitter'
 require 'google_maps_service'
+require_relative("lib/search.rb")
 
 
 client = Twitter::REST::Client.new do |config|
@@ -12,7 +13,12 @@ client = Twitter::REST::Client.new do |config|
   config.access_token_secret = "bvyv2Y04HYCWTIFjOYe6qUqN9VAYw192QFv7rmdwamLwp"
 end
 
+display_tweets = Search.new("User")  
+
 get "/" do 
+
+	# @tweets = display_tweets.tweets
+
 	erb(:appy)
 	end
 
@@ -23,9 +29,18 @@ get "/search" do
 
 post "/input_search" do 
 
-	client.search("##{params[:search]} -rt").take(10).collect do |tweet|
- puts "#{tweet.user.screen_name}: #{tweet.text}"
+
+
+@marc = client.search("from:#{params[:search]}" ).take(100).collect do |tweet|
+  puts "#{tweet.user.screen_name}: #{tweet.text}"
+
+  
 
 end
+
+erb(:results)
+
+
+
 
 end

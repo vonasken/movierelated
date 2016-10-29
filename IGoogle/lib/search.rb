@@ -1,10 +1,19 @@
 	class Search
+
+		attr_reader :tweets , :content
 	
-	def twitter_search(input)
-		
-		# client.search(("#{input} -rt").first.text)
+	def initialize(tweets)
+
+		@tweets = []
+
+		@content = content
 	
 	end
 
+	 def update_content!(string)
+    	@content = string
+    	
+    end
 
-	end
+
+end
