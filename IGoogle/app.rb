@@ -30,17 +30,7 @@ get "/search" do
 post "/input_search" do 
 
 
-
-@marc = client.search("from:#{params[:search]}" ).take(100).collect do |tweet|
-  puts "#{tweet.user.screen_name}: #{tweet.text}"
-
-  
-
-end
-
 erb(:results)
-
-
 
 
 end
